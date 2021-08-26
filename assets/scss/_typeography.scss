@@ -1,0 +1,53 @@
+$textMargin: clamp(0.5rem, 1vw / 2.7, 1rem);
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+li,
+button,
+a,
+span,
+input,
+label {
+  font-family: IBM Plex Sans, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+li,
+button,
+a {
+  margin: $textMargin 0 $textMargin 0;
+}
+
+
+.t1 {
+  font-size: clamp(2rem, 6 * 1vw, 6rem);
+  font-weight: 1000;
+}
+.t2 {
+  font-size: clamp(1.7rem, 2.3 * 2vw, 4rem);
+  font-weight: 900;
+}
+.t3 {
+  font-size: clamp(1.3rem, 3 * 1vw, 3rem);
+  font-weight: 800;
+}
+.t4 {
+  font-size: clamp(1rem, 2 * 1vw, 2.2rem);
+  font-weight: 700;
+}
+.t5 {
+  font-size: clamp(0.8rem, 2 * 1vw, 1.5rem);
+  font-weight: 600;
+}
+.tp {
+  font-size: clamp(0.9rem, 2.3 * 1vw, 1.2rem);
+  font-weight: 500;
+}

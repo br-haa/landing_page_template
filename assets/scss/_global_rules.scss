@@ -1,0 +1,31 @@
+@import 'variables';
+
+body {
+  margin: 0;
+}
+.outer_wrapper {
+  width: clamp(80%, 1000px - 5vw, 95%);
+  justify-self: center;
+}
+.accent_text {
+  color: $accent_color;
+}
+.parent {
+  display: grid;
+}
+.default_shadow {
+  box-shadow: 0 0 5px 3px black;
+}
+
+.hide_med {
+  display: auto;
+  @media (max-width: $break) {
+    display: none;
+  }
+}
+.hide_large {
+  display: none;
+  @media (max-width: $break) {
+    display: initial;
+  }
+}
