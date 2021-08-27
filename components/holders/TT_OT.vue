@@ -16,15 +16,5 @@
   @media (max-width: $break) {
     grid-template-columns: 1fr;
   }
-  .left {
-    background: red;
-    grid-column: span 2;
-    @media (max-width: $break) {
-      grid-column: span 1;
-    }
-  }
-  .right {
-    background: blue;
-  }
 }
 </style>

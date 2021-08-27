@@ -5,7 +5,12 @@ if (!Vue.__pic_mixin__) {
   Vue.mixin({
     methods: {
       displayPic(pic) {
-        return require(`@/assets/img/${pic}`)
+        try {
+          const picture = require(`@/assets/img/${pic}`)
+          return picture
+        } catch (e) {
+          return false
+        }
       },
     },
   })

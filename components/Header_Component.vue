@@ -37,6 +37,12 @@ export default {
       return this.$store.state.content.header
     },
   },
+  methods: {
+    scrollTo(location) {
+      const loc = document.querySelector(`#${location}`)
+      loc.scrollIntoView(true, { behavior: 'smooth' })
+    },
+  },
 }
 </script>
 

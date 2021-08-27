@@ -10,12 +10,12 @@
 
 <style lang="scss" scoped>
 section {
+  color: white;
   background: $main_color;
   display: flex;
   justify-content: center;
   padding: $gap;
   .outer_wrapper {
-    background: green;
     min-height: 200px;
     display: grid;
     gap: $gap;

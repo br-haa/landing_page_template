@@ -2,15 +2,33 @@
   <section class="parent">
     <div class="outer_wrapper">
       <div class="contactBlock">
-        <slot name="top"></slot>
-        <slot name="mid"></slot>
-        <slot name="bot"></slot>
+        <img :src="displayPic(content.img.src)" :alt="content.img.alt" />
+        <h3 class="t3 contactCallNow">
+          {{ content.text }}
+          <span><NumberComponent /></span>
+        </h3>
+        <DynamicButton>{{ content.buttonText }}</DynamicButton>
       </div>
     </div>
   </section>
 </template>
 
-<script></script>
+<script>
+import DynamicButton from './holders/Dynamic_Button.vue'
+import NumberComponent from './Number_Component.vue'
+export default {
+  components: {
+    DynamicButton,
+    NumberComponent,
+  },
+  props: {
+    content: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
 
 <style scoped lang="scss">
 .outer_wrapper {
@@ -27,7 +45,6 @@
     margin: 1rem 0 1rem 0;
   }
   .contactCallNow {
-    font-size: 3.5vw;
     font-weight: bold !important;
     text-align: center;
     @media (max-width: 1080px) {

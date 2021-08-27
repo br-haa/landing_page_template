@@ -1,8 +1,28 @@
 <template>
   <div class="widget">
-    <img />
-    <div class="text_and_stars"></div>
-    <DynamicButton> </DynamicButton>
+    <img :src="displayPic(content.img.src)" alt="" />
+    <div class="text_and_stars">
+      <span class="t5"
+        >{{ content.reviewAmount }} {{ content.reviewType }}</span
+      >
+      <div v-if="content.stars" class="starsHolder">
+        <img
+          v-for="(star, index) in Math.floor(content.stars)"
+          :key="index"
+          :src="displayPic('icons/stars/star.svg')"
+          alt="star"
+        />
+        <img
+          v-if="content.stars % 1 !== 0"
+          :src="displayPic('icons/stars/starHalf.svg')"
+          alt="star"
+        />
+      </div>
+      <p v-if="content.text" class="tp widgetText">
+        {{ content.text }}
+      </p>
+    </div>
+    <DynamicButton>{{ content.buttonText }} </DynamicButton>
   </div>
 </template>
 
@@ -12,5 +32,25 @@ export default {
   components: {
     DynamicButton,
   },
+  props: {
+    content: {
+      type: Object,
+      required: true,
+    },
+  },
+  methods: {
+    scrollTo(location) {
+      const loc = document.querySelector(`#${location}`)
+      loc.scrollIntoView(true, { behavior: 'smooth' })
+    },
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+.widget {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+</style>

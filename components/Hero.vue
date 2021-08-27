@@ -11,9 +11,9 @@
       </div>
       <div class="hero_right">
         <div class="text_holder">
-          <h1 class="t1">{{ headlines.value[hlSet].headline }}</h1>
+          <h1 class="t1">{{ noWidow(headlines.value[hlSet].headline) }}</h1>
           <h2 class="t3 accent_text">
-            {{ headlines.value[hlSet].subhead }}
+            {{ noWidow(headlines.value[hlSet].subhead) }}
           </h2>
           <ul>
             <li
@@ -21,7 +21,7 @@
               :key="`blerb${index}`"
               class="t5"
             >
-              {{ item }}
+              {{ noWidow(item) }}
             </li>
           </ul>
         </div>

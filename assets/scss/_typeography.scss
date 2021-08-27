@@ -26,24 +26,27 @@ a {
   margin: $textMargin 0 $textMargin 0;
 }
 
-
 .t1 {
-  font-size: clamp(2rem, 6 * 1vw, 6rem);
+  font-size: clamp(2rem, 4.5 * 1vw, 4rem);
   font-weight: 1000;
 }
 .t2 {
-  font-size: clamp(1.7rem, 2.3 * 2vw, 4rem);
+  font-size: clamp(1.7rem, 4 * 1vw, 3.5rem);
   font-weight: 900;
 }
 .t3 {
-  font-size: clamp(1.3rem, 3 * 1vw, 3rem);
+  font-size: clamp(1.3rem, 3.5 * 1vw, 3rem);
   font-weight: 800;
 }
 .t4 {
-  font-size: clamp(1rem, 2 * 1vw, 2.2rem);
+  font-size: clamp(1rem, 3 * 1vw, 2.5rem);
   font-weight: 700;
 }
 .t5 {
+  font-size: clamp(0.8rem, 2.5 * 1vw, 2rem);
+  font-weight: 600;
+}
+.t6 {
   font-size: clamp(0.8rem, 2 * 1vw, 1.5rem);
   font-weight: 600;
 }

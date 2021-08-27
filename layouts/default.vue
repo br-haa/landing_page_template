@@ -4,13 +4,15 @@
     <Header :scroll-location="scroll_location" />
     <Hero />
     <section id="post_hero_button_row">
-      <DynamicButton></DynamicButton>
+      <DynamicButton>{{ content.hero.whyButton }}</DynamicButton>
     </section>
     <Floater :scroll-location="scroll_location"
       ><TT_OT>
         <div>
-          <h1 class="t3">{{ content.largestBlock.headline }}</h1>
-          <h2 class="t5 accent_text">{{ content.largestBlock.subhead }}</h2>
+          <h1 class="t3">{{ noWidow(content.largestBlock.headline) }}</h1>
+          <h2 class="t5 accent_text">
+            {{ noWidow(content.largestBlock.subhead) }}
+          </h2>
         </div>
         <img />
       </TT_OT>
@@ -20,8 +22,10 @@
     <FullRow>
       <TT_OT>
         <div>
-          <h1 class="t3">{{ content.experienced.headline }}</h1>
-          <h2 class="t5 accent_text">{{ content.experienced.subhead }}</h2>
+          <h1 class="t3">{{ noWidow(content.experienced.headline) }}</h1>
+          <h2 class="t5 accent_text">
+            {{ noWidow(content.experienced.subhead) }}
+          </h2>
         </div>
         <img /> </TT_OT
       ><HalfHalf>
@@ -31,33 +35,15 @@
           :content="widget"
         /> </HalfHalf
     ></FullRow>
-    <Cta>
-      <template #top>
-        <img
-          :src="displayPic(content.cta1.img.src)"
-          :alt="content.cta1.img.alt"
-        />
-      </template>
-      <template #mid>
-        <h3 class="t3 contactCallNow">
-          {{ content.cta1.text }}
-          <span><NumberComponent /></span>
-        </h3>
-      </template>
-      <template #bot>
-        <DynamicButton class="tp" @buttonPress="scrollTo('formBlock')">{{
-          content.cta1.buttonText
-        }}</DynamicButton>
-      </template>
-    </Cta>
+    <Cta :content="content.cta1"> </Cta>
     <FullRow> <FormComponent /> </FullRow>
-    <Floater :scroll-location="scroll_location">> <Fresh /> </Floater>
+    <Floater :scroll-location="scroll_location"> <Fresh /> </Floater>
     <section id="help">
       <h1 v-if="content.help.headline" class="t3">
-        {{ content.help.headline }}
+        {{ noWidow(content.help.headline) }}
       </h1>
       <h2 v-if="content.help.subhead" class="accent_text t2">
-        {{ content.help.subhead }}
+        {{ noWidow(content.help.subhead) }}
       </h2>
     </section>
   </div>
@@ -76,7 +62,6 @@ import DynamicButton from '../components/holders/Dynamic_Button.vue'
 import TT_OT from '../components/holders/TT_OT.vue'
 import HalfHalf from '../components/holders/Half_half.vue'
 import Fresh from '../components/Fresh.vue'
-import NumberComponent from '../components/Number_Component.vue'
 import ReviewWidget from '../components/Review_Widget.vue'
 
 export default {
@@ -93,7 +78,6 @@ export default {
     TT_OT,
     HalfHalf,
     Fresh,
-    NumberComponent,
     ReviewWidget,
   },
   data() {
@@ -128,6 +112,11 @@ export default {
     },
     setData() {
       this.scroll_location = window.pageYOffset
+    },
+
+    scrollTo(location) {
+      const loc = document.querySelector(`#${location}`)
+      loc.scrollIntoView(true, { behavior: 'smooth' })
     },
   },
 }

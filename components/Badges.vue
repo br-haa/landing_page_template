@@ -104,7 +104,7 @@ export default {
     }
 
     &-enter {
-      transform: translateY(1em);
+      transform: translateY(1em) rotate(-50deg);
       opacity: 0;
     }
   }
