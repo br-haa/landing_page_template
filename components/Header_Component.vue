@@ -3,11 +3,11 @@
     <header class="parent">
       <div class="outer_wrapper">
         <img class="logo" :src="displayPic(content.logo.src)" />
-        <span v-if="content.middleText && scroll_location < 200" class="t5">{{
+        <span v-if="content.middleText && scrollLocation < 200" class="t5">{{
           content.middleText
         }}</span>
         <div class="call_now_holder">
-          <span class="call_now t4">Call Now <Number /> </span>
+          <span class="call_now t4">Call Now <NumberComponent /> </span>
           <DynamicButton v-if="content.buttonText" class="hide_large">{{
             content.buttonText
           }}</DynamicButton>
@@ -20,11 +20,17 @@
 
 <script>
 import DynamicButton from './holders/Dynamic_Button.vue'
-import Number from './Number.vue'
+import NumberComponent from './Number_Component.vue'
 export default {
   components: {
     DynamicButton,
-    Number,
+    NumberComponent,
+  },
+  props: {
+    scrollLocation: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     content() {

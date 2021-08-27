@@ -1,15 +1,36 @@
 <template>
   <div id="main_wrapper">
     <nuxt />
-    <Header />
+    <Header :scroll-location="scroll_location" />
     <Hero />
     <section id="post_hero_button_row">
       <DynamicButton></DynamicButton>
     </section>
-    <Floater><TT_OT></TT_OT> </Floater>
-    <Badges v-if="content.badges" />
+    <Floater :scroll-location="scroll_location"
+      ><TT_OT>
+        <div>
+          <h1 class="t3">{{ content.largestBlock.headline }}</h1>
+          <h2 class="t5 accent_text">{{ content.largestBlock.subhead }}</h2>
+        </div>
+        <img />
+      </TT_OT>
+    </Floater>
+    <Badges v-if="content.badges" :scroll-location="scroll_location" />
     <Scroller />
-    <FullRow> <TT_OT></TT_OT><HalfHalf></HalfHalf></FullRow>
+    <FullRow>
+      <TT_OT>
+        <div>
+          <h1 class="t3">{{ content.experienced.headline }}</h1>
+          <h2 class="t5 accent_text">{{ content.experienced.subhead }}</h2>
+        </div>
+        <img /> </TT_OT
+      ><HalfHalf>
+        <ReviewWidget
+          v-for="(widget, index) in content.experienced.widgets"
+          :key="`widget${index}`"
+          :content="widget"
+        /> </HalfHalf
+    ></FullRow>
     <Cta>
       <template #top>
         <img
@@ -20,7 +41,7 @@
       <template #mid>
         <h3 class="t3 contactCallNow">
           {{ content.cta1.text }}
-          <span><Number /></span>
+          <span><NumberComponent /></span>
         </h3>
       </template>
       <template #bot>
@@ -30,7 +51,7 @@
       </template>
     </Cta>
     <FullRow> <FormComponent /> </FullRow>
-    <Floater> <Fresh /> </Floater>
+    <Floater :scroll-location="scroll_location">> <Fresh /> </Floater>
     <section id="help">
       <h1 v-if="content.help.headline" class="t3">
         {{ content.help.headline }}
@@ -55,6 +76,8 @@ import DynamicButton from '../components/holders/Dynamic_Button.vue'
 import TT_OT from '../components/holders/TT_OT.vue'
 import HalfHalf from '../components/holders/Half_half.vue'
 import Fresh from '../components/Fresh.vue'
+import NumberComponent from '../components/Number_Component.vue'
+import ReviewWidget from '../components/Review_Widget.vue'
 
 export default {
   components: {
@@ -70,15 +93,41 @@ export default {
     TT_OT,
     HalfHalf,
     Fresh,
+    NumberComponent,
+    ReviewWidget,
   },
   data() {
     return {
       test: 1,
+      scroll_location: 0,
     }
   },
   computed: {
     content() {
       return this.$store.state.content
+    },
+  },
+  mounted() {
+    window.addEventListener(
+      'scroll',
+      this.debounce(() => this.setData())
+    )
+  },
+  destroyed() {
+    window.removeEventListener(
+      'scroll',
+      this.debounce(() => this.setData())
+    )
+  },
+  methods: {
+    debounce(func, timeout = 10) {
+      // todo add timeout logic
+      return (...args) => {
+        func.apply(this.args)
+      }
+    },
+    setData() {
+      this.scroll_location = window.pageYOffset
     },
   },
 }

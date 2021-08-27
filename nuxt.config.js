@@ -40,7 +40,6 @@ export default {
     { src: '~/plugins/displayPic.js' },
     { src: '~/plugins/haaForm.js' },
     { src: '~/plugins/markdown.js' },
-    { src: '~/plugins/scrollPosition.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

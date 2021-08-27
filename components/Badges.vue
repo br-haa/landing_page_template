@@ -26,6 +26,12 @@
 <script>
 export default {
   name: 'BadgesRow',
+  props: {
+    scrollLocation: {
+      type: Number,
+      default: 10000,
+    },
+  },
   data() {
     return {
       show: false,
@@ -38,7 +44,7 @@ export default {
     },
   },
   watch: {
-    scroll_location() {
+    scrollLocation() {
       this.eltop()
     },
   },

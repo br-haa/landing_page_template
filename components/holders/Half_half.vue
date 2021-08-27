@@ -1,7 +1,6 @@
 <template>
   <div class="half">
-    <div class="left"></div>
-    <div class="right"></div>
+    <slot></slot>
   </div>
 </template>
 

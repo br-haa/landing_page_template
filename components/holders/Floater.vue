@@ -12,13 +12,19 @@
 
 <script>
 export default {
+  props: {
+    scrollLocation: {
+      type: Number,
+      default: 10000,
+    },
+  },
   data() {
     return {
       show: false,
     }
   },
   watch: {
-    scroll_location() {
+    scrollLocation() {
       this.eltop()
     },
   },

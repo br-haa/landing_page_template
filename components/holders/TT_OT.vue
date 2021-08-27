@@ -1,7 +1,6 @@
 <template>
   <div class="two_thirds_one_third">
-    <div class="left"></div>
-    <div class="right"></div>
+    <slot></slot>
   </div>
 </template>
 
@@ -11,7 +10,7 @@
 .two_thirds_one_third {
   display: grid;
   gap: $gap;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   min-height: 200px;
   width: 100%;
   @media (max-width: $break) {

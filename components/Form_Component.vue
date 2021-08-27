@@ -27,7 +27,7 @@
         ]"
       >
         <h1 class="t4">
-          Call Now <Number />
+          Call Now <NumberComponent />
           <br class="hide_large" />
           {{ noWidow(content.headline) }}
         </h1>
@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import Number from './Number.vue'
+import NumberComponent from './Number_Component.vue'
 export default {
   components: {
-    Number,
+    NumberComponent,
   },
   computed: {
     content() {
