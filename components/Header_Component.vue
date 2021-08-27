@@ -50,7 +50,7 @@ export default {
 @mixin header_height {
   min-height: 6rem;
   @media (max-width: $break) {
-    height: 12rem;
+    min-height: 12rem;
   }
 }
 

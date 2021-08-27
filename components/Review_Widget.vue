@@ -1,6 +1,6 @@
 <template>
   <div class="widget">
-    <img :src="displayPic(content.img.src)" alt="" />
+    <img :src="displayPic(`icons/${content.img.src}`)" alt="" />
     <div class="text_and_stars">
       <span class="t5"
         >{{ content.reviewAmount }} {{ content.reviewType }}</span
@@ -52,5 +52,26 @@ export default {
   display: flex;
   align-items: center;
   gap: $gap;
+  img {
+    max-height: 100px;
+    width: clamp(50px, 2vw, 80px);
+  }
+  @media (max-width: $break) {
+    width: clamp(300px, 90%, 700px);
+    justify-self: center;
+    flex-wrap: wrap;
+  }
+}
+.starsHolder {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+  gap: 1rem;
+  img {
+    $size: clamp(13px, 2vw, 40px);
+
+    width: $size;
+    height: $size;
+  }
 }
 </style>
