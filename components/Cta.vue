@@ -1,14 +1,16 @@
 <template>
-  <section class="parent">
+  <section ref="cta" class="parent">
     <div class="outer_wrapper">
-      <div class="contactBlock">
-        <img :src="displayPic(content.img.src)" :alt="content.img.alt" />
-        <h3 class="t3 contactCallNow">
-          {{ content.text }}
-          <span><NumberComponent /></span>
-        </h3>
-        <DynamicButton>{{ content.buttonText }}</DynamicButton>
-      </div>
+      <transition name="appear">
+        <div v-if="show" class="contactBlock animated">
+          <img :src="displayPic(content.img.src)" :alt="content.img.alt" />
+          <h3 class="t3 contactCallNow">
+            {{ content.text }}
+            <span><NumberComponent /></span>
+          </h3>
+          <DynamicButton>{{ content.buttonText }}</DynamicButton>
+        </div>
+      </transition>
     </div>
   </section>
 </template>
@@ -25,6 +27,29 @@ export default {
     content: {
       type: Object,
       required: true,
+    },
+    scrollLocation: {
+      type: Number,
+      default: 10000,
+    },
+  },
+  data() {
+    return {
+      show: false,
+    }
+  },
+  watch: {
+    scrollLocation() {
+      this.eltop()
+    },
+  },
+  methods: {
+    eltop() {
+      const SECTION = this.$refs.cta
+      const EL_FROM_TOP = SECTION.getBoundingClientRect().y
+      if (window.innerHeight >= EL_FROM_TOP) {
+        this.show = true
+      }
     },
   },
 }
@@ -54,5 +79,16 @@ export default {
   button {
     width: 100%;
   }
+}
+.animated {
+  transition: all 1.5s;
+}
+.appear-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.appear-enter {
+  opacity: 0;
+  transform: translateY(35px);
 }
 </style>

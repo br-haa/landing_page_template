@@ -1,7 +1,17 @@
 <template>
-  <section>
-    <div class="outer_wrapper"></div>
-  </section>
+  <div id="copyright">© {{ year }}</div>
 </template>
 
-<script></script>
+<script>
+export default {
+  computed: {
+    year() {
+      const d = new Date()
+      return d.getFullYear()
+    },
+    content() {
+      return this.$store.state.content.copyright
+    },
+  },
+}
+</script>

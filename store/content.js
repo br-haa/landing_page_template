@@ -103,5 +103,5 @@ export const state = () => ({
     headline: `The Call Is FREE! The Evaluation Is FREE!`,
     subhead: `We Can Help!`,
   },
-  copywrite: ``,
+  copywrite: `copywrite`,
 })

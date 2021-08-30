@@ -35,7 +35,7 @@
           :content="widget"
         /> </HalfHalf
     ></FullRow>
-    <Cta :content="content.cta1"> </Cta>
+    <Cta :scroll-location="scroll_location" :content="content.cta1"> </Cta>
     <FullRow> <FormComponent /> </FullRow>
     <Floater :scroll-location="scroll_location"> <Fresh /> </Floater>
     <section id="help">
@@ -46,6 +46,12 @@
         {{ noWidow(content.help.subhead) }}
       </h2>
     </section>
+    <FooterComponent>
+      <Reviews />
+      <Cta :scroll-location="scroll_location" :content="content.cta2"> </Cta>
+      <Disclaimer />
+      <Copyright />
+    </FooterComponent>
   </div>
 </template>
 
@@ -63,6 +69,10 @@ import TT_OT from '../components/holders/TT_OT.vue'
 import HalfHalf from '../components/holders/Half_half.vue'
 import Fresh from '../components/Fresh.vue'
 import ReviewWidget from '../components/Review_Widget.vue'
+import FooterComponent from '../components/holders/Footer_component.vue'
+import Reviews from '../components/Reviews.vue'
+import Disclaimer from '../components/Disclaimer.vue'
+import Copyright from '../components/Copyright.vue'
 
 export default {
   components: {
@@ -79,6 +89,10 @@ export default {
     HalfHalf,
     Fresh,
     ReviewWidget,
+    FooterComponent,
+    Reviews,
+    Disclaimer,
+    Copyright,
   },
   data() {
     return {
